@@ -1,0 +1,13 @@
+# This is a basic workflow that filters the build job when there is a label present called stage
+
+name: Stage the app
+
+on:
+  pull_request:
+    types: [labeled]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    if: contains(github.event.pull_request.labels.*.name, 'stage')
